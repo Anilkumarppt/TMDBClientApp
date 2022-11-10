@@ -119,6 +119,49 @@ fun PosterImage(
 
 }
 
+@Composable
+fun MovieItem(scaffoldState: ScaffoldState, scope: CoroutineScope, movie: Movie) {
+    Card(
+        modifier = Modifier
+            .padding(5.dp)
+            .fillMaxWidth(),
+        elevation = 10.dp, backgroundColor = md_theme_light_background
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+
+            PosterImage(
+                poster = movie.posterPath,
+                title = movie.title,
+                movieId = movie.id,
+                scrollId = 1,
+                onPosterClick = { movieId, scroll -> })
+            Column(
+                Modifier
+                    .background(Color.Gray)
+                    .fillMaxWidth()
+                    .padding(top = 4.dp, bottom = 4.dp),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    movie.title,
+                    Modifier
+                        .align(Alignment.CenterHorizontally)
+                        .padding(bottom = 8.dp, start = 16.dp, end = 16.dp),
+                    style = MaterialTheme.typography.body1,
+                    color = Color.Black, maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+            }
+        }
+
+    }
+
+}
 
 @Preview(showSystemUi = true)
 @Composable

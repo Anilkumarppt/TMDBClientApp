@@ -27,7 +27,7 @@ class MoviesRepositoryImpl @Inject constructor(
     private suspend fun getMoviesFromAPI():List<Movie>{
         lateinit var moviesList:List<Movie>
         try {
-            val result=remoteDataSource.getMovies()
+            val result=remoteDataSource.getPopularMovies()
             result.let {
                 if(it.isSuccessful){
                     moviesList=it.body()!!.results

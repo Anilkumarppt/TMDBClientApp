@@ -9,7 +9,7 @@ import javax.inject.Inject
 class MovieRemoteDataSourceImpl @Inject constructor(private val tmdbService: TMDBService, private val apiKey:String) :
     MovieRemoteDataSource {
 
-    override suspend fun getMovies(): Response<MovieList> {
+    override suspend fun getPopularMovies(): Response<MovieList> {
         return tmdbService.getPopularMovies(apiKey)
     }
 }
